@@ -1,0 +1,134 @@
+\documentclass{article}
+
+\usepackage{minted}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=black,
+    urlcolor=blue,
+}
+
+
+\title{Content Presentation}
+
+\date{23.5.2016}
+
+\author{Oliver Heidmann}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{What is Rcpp}
+
+    R is for easily acessing c functions in R
+    +better description
+    +more facts
+\section{How to setup Rcpp}
+
+    \subsection{to use in C/C++ code}
+        simply include \textless Rcpp.h\textgreater
+        \newline
+        install.packages('Rcpp')
+        \newline
+        install.packages('inline')
+
+\section{Rcpp basics}
+    \subsection{RObject and SEXP}
+        Rcpp::RObject are very thin wrappers around an SEXP. 
+        In fact the SEXP is the only member of the Rcpp::RObject.(check if fact or just
+        misunderstanding)
+        \newline
+        SEXP is guarded from Garbage collection through Rcpp::RObject
+
+        SEXP types:
+            
+    \subsection{conversions}
+        \subsubsection{what is wrapable}
+        \subsubsection{C++ to R}
+            Rcpp::wrap:
+            \begin{minted}{c++}
+    template <typename T> SEXP wrap(const T& object)
+            \end{minted}
+            +expl
+        \subsubsection{R to C++}
+        \begin{minted}{c++}
+    template <typename T> T as(SEXP x)
+        \end{minted} 
+        + expl
+    \subsection{Structure of Rcpp code}
+        better explanation of " first convert , calculate, convert
+    \subsection{Calling a function}
+        explanation of .call
+\section{ two ways to use Rcpp}
+
+    \subsection{Using Rcpp Inline}
+
+    what happens with the c++ inline function when executed - explanation
+        \begin{minted}{c++}
+    cppFunction("double add(double x, double y, double z){
+        double sum = x + y + z;
+        return sum;
+        }"
+    )
+
+add(2,33,24.3)        \end{minted}
+
+
+    \subsection{Rcpp packages}
+        Rcpp.package.skeleton - explanation
+        \newline
+        Example C++ function
+            \begin{minted}{c++}
+
+    std::vector<int> add_lists(std::vector<int> vec1, std::vector<int> vec2) {
+        unsigned long max_length = std::min(vec1.size(), vec2.size());
+        std::vector<int> result;
+        for (unsigned long i = 0; i < max_length; i++) {
+            result.push_back(vec1[i] + vec2[i]);
+        }
+        return result;}
+
+            \end{minted}
+        Example binding to R function
+            \begin{minted}{c++}
+    add_lists <-function(vec1, vec2) {
+       .Call( "test_add_lists", vec1, vec2, PACKAGE = 'test')
+   }
+            \end{minted}
+        Example Export Wrapper function
+            \begin{minted}{c++}
+    RcppExport SEXP test_add_lists(SEXP vec1, SEXP vec2) {
+        BEGIN_RCPP
+        Rcpp::RObject __result;
+        Rcpp::RNGScope __rngScope;
+        __result =
+        add_lists(Rcpp::as<std::vector<int>>(vec1), Rcpp::as<std::vector<int>>(vec2));
+        return Rcpp::wrap(__result);
+        END_RCPP
+    }
+            \end{minted}
+
+    \section{Paralell code(OPTIONAL NO IDEA IF IN FINAL VERSION OR NOT)}
+        \subsection{in C++ code used in R}
+        \subsection{in R}
+
+    \section{Examples(Selfwritten and more)}
+        \section{self}
+            
+        \section{other}
+    \section{Source}
+    \url{https://stat.ethz.ch/R-manual/R-devel/library/parallel/doc/parallel.pdf}
+        \newline
+        \url{http://dirk.eddelbuettel.com/code/rcpp/Rcpp-introduction.pdf}
+        \newline
+    \url{http://dirk.eddelbuettel.com/code/rcpp/Rcpp-package.pdf}
+        \newline
+    \url{http://dirk.eddelbuettel.com/code/rcpp/Rcpp-FAQ.pdf}
+        \newline
+
+REAL CITATIONS AS ARE WISHED FOR IN THOSE PDF WILL FOLLOW!!!
+\end{document}
