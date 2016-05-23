@@ -1,0 +1,21 @@
+\contentsline {section}{\numberline {1}What is Rcpp}{3}{section.1}
+\contentsline {section}{\numberline {2}How to setup Rcpp}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}to use in C/C++ code}{3}{subsection.2.1}
+\contentsline {section}{\numberline {3}Rcpp basics}{3}{section.3}
+\contentsline {subsection}{\numberline {3.1}RObject and SEXP}{3}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}conversions}{3}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}what is wrapable}{3}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}C++ to R}{3}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}R to C++}{3}{subsubsection.3.2.3}
+\contentsline {subsection}{\numberline {3.3}Structure of Rcpp code}{3}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Calling a function}{3}{subsection.3.4}
+\contentsline {section}{\numberline {4} two ways to use Rcpp}{4}{section.4}
+\contentsline {subsection}{\numberline {4.1}Using Rcpp Inline}{4}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Rcpp packages}{4}{subsection.4.2}
+\contentsline {section}{\numberline {5}Paralell code(OPTIONAL NO IDEA IF IN FINAL VERSION OR NOT)}{5}{section.5}
+\contentsline {subsection}{\numberline {5.1}in C++ code used in R}{5}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}in R}{5}{subsection.5.2}
+\contentsline {section}{\numberline {6}Examples(Selfwritten and more)}{5}{section.6}
+\contentsline {section}{\numberline {7}self}{5}{section.7}
+\contentsline {section}{\numberline {8}other}{5}{section.8}
+\contentsline {section}{\numberline {9}Source}{5}{section.9}

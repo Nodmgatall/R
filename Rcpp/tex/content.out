@@ -1,0 +1,21 @@
+\BOOKMARK [1][-]{section.1}{What is Rcpp}{}% 1
+\BOOKMARK [1][-]{section.2}{How to setup Rcpp}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{to use in C/C++ code}{section.2}% 3
+\BOOKMARK [1][-]{section.3}{Rcpp basics}{}% 4
+\BOOKMARK [2][-]{subsection.3.1}{RObject and SEXP}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.2}{conversions}{section.3}% 6
+\BOOKMARK [3][-]{subsubsection.3.2.1}{what is wrapable}{subsection.3.2}% 7
+\BOOKMARK [3][-]{subsubsection.3.2.2}{C++ to R}{subsection.3.2}% 8
+\BOOKMARK [3][-]{subsubsection.3.2.3}{R to C++}{subsection.3.2}% 9
+\BOOKMARK [2][-]{subsection.3.3}{Structure of Rcpp code}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.4}{Calling a function}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{ two ways to use Rcpp}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{Using Rcpp Inline}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.2}{Rcpp packages}{section.4}% 14
+\BOOKMARK [1][-]{section.5}{Paralell code\(OPTIONAL NO IDEA IF IN FINAL VERSION OR NOT\)}{}% 15
+\BOOKMARK [2][-]{subsection.5.1}{in C++ code used in R}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.2}{in R}{section.5}% 17
+\BOOKMARK [1][-]{section.6}{Examples\(Selfwritten and more\)}{}% 18
+\BOOKMARK [1][-]{section.7}{self}{}% 19
+\BOOKMARK [1][-]{section.8}{other}{}% 20
+\BOOKMARK [1][-]{section.9}{Source}{}% 21
