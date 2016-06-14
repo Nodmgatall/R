@@ -6,7 +6,7 @@
 
 using namespace Rcpp;
 
-List rcpp_hello_world();
+void rcpp_hello_world();
 int return_given_value(int value);
 std::vector<int> add_lists(std::vector<int> vec1, std::vector<int> vec2);
 
@@ -15,9 +15,10 @@ RcppExport SEXP test_rcpp_hello_world() {
     BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
-    __result = Rcpp::wrap(rcpp_hello_world());
+    __result = 1;
+    rcpp_hello_world();
     return __result;
-    END_RCPP
+    END_RCPP;
 }
 
 // example showing how to paese a number(in this case int)
