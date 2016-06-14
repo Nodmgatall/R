@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-    \PYG{n}{add\PYGZus{}lists} \PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{n}{function}\PYG{p}{(}\PYG{n}{vec1}\PYG{p}{,} \PYG{n}{vec2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-       \PYG{p}{.}\PYG{n}{Call}\PYG{p}{(} \PYG{l+s}{\PYGZdq{}test\PYGZus{}add\PYGZus{}lists\PYGZdq{}}\PYG{p}{,} \PYG{n}{vec1}\PYG{p}{,} \PYG{n}{vec2}\PYG{p}{,} \PYG{n}{PACKAGE} \PYG{o}{=} \PYG{err}{\PYGZsq{}}\PYG{n}{test}\PYG{err}{\PYGZsq{}}\PYG{p}{)}
-   \PYG{p}{\PYGZcb{}}
-\end{Verbatim}
