@@ -13,5 +13,3 @@ j = c(1,4,6)
 print("using function from package <test>: add_lists(c(1,2,3), c(1,4,6))")
 add_lists(i,j)
 
-print("using function from package <test>: add(2,33,24.3)")
-add(2,33,24)
