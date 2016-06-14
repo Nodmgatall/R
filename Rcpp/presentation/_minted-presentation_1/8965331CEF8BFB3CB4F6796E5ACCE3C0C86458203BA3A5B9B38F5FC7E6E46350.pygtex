@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+m}{.}\PYG{k+kp}{call}\PYG{p}{(}
+    \PYG{l+s}{\PYGZdq{}function\PYGZus{}name\PYGZdq{}}\PYG{p}{,} parameter\PYGZus{}1\PYG{p}{,} \PYG{k+kc}{...}\PYG{p}{,}
+    parameter\PYGZus{}n\PYG{p}{,} package\PYG{o}{=}\PYG{l+s}{\PYGZdq{}packagename\PYGZdq{}}
+\PYG{p}{)}
+\end{Verbatim}

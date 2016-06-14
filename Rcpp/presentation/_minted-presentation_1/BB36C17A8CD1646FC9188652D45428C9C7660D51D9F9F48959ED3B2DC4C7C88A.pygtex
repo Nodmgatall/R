@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{RcppExport} \PYG{n}{SEXP} \PYG{n+nf}{test\PYGZus{}add\PYGZus{}lists}\PYG{p}{(}\PYG{n}{SEXP} \PYG{n}{r\PYGZus{}list1}\PYG{p}{,} \PYG{n}{SEXP} \PYG{n}{r\PYGZus{}list2}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{cpp\PYGZus{}vector1}\PYG{p}{;}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{cpp\PYGZus{}vector2}\PYG{p}{;}
+
+    \PYG{n}{BEGIN\PYGZus{}RCPP}
+    \PYG{n}{Rcpp}\PYG{o}{::}\PYG{n}{RObject} \PYG{n}{\PYGZus{}\PYGZus{}result}\PYG{p}{;}
+    \PYG{n}{Rcpp}\PYG{o}{::}\PYG{n}{RNGScope} \PYG{n}{\PYGZus{}\PYGZus{}rngScope}\PYG{p}{;}
+
+    \PYG{n}{cpp\PYGZus{}vector1} \PYG{o}{=} \PYG{n}{Rcpp}\PYG{o}{::}\PYG{n}{as}\PYG{o}{\PYGZlt{}}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{p}{(}\PYG{n}{r\PYGZus{}list1}\PYG{p}{);}
+    \PYG{n}{cpp\PYGZus{}vector2} \PYG{o}{=} \PYG{n}{Rcpp}\PYG{o}{::}\PYG{n}{as}\PYG{o}{\PYGZlt{}}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{p}{(}\PYG{n}{r\PYGZus{}list2}\PYG{p}{);}
+
+    \PYG{n}{\PYGZus{}\PYGZus{}result} \PYG{o}{=} \PYG{n}{add\PYGZus{}lists}\PYG{p}{(}\PYG{n}{cpp\PYGZus{}vector1}\PYG{p}{,} \PYG{n}{cpp\PYGZus{}vector2}\PYG{p}{);}
+
+    \PYG{k}{return} \PYG{n}{Rcpp}\PYG{o}{::}\PYG{n}{wrap}\PYG{p}{(}\PYG{n}{\PYGZus{}\PYGZus{}result}\PYG{p}{);}
+    \PYG{n}{END\PYGZus{}RCPP}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

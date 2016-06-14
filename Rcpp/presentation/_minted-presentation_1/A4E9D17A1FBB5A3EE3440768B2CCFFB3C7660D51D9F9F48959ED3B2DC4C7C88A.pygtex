@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}Rcpp.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+
+\PYG{c+c1}{// [[Rcpp::export]]}
+\PYG{k+kt}{double} \PYG{n+nf}{myCmean}\PYG{p}{(}\PYG{n}{Rcpp}\PYG{o}{::}\PYG{n}{NumericVector} \PYG{n}{x}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+
+    \PYG{k+kt}{double} \PYG{n}{result} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k}{auto} \PYG{n+nl}{v} \PYG{p}{:} \PYG{n}{x}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+        \PYG{n}{result} \PYG{o}{+=} \PYG{n}{v}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{result}\PYG{o}{/}\PYG{n}{x}\PYG{p}{.}\PYG{n}{length}\PYG{p}{();}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
