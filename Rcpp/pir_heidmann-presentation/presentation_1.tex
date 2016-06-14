@@ -333,6 +333,7 @@ RcppExport SEXP test_add_lists(SEXP r_list1, SEXP r_list2)
 \frametitle{package inline}
 % - - - - - - - - - - - - - - - - - - - - - - - -
 \begin{minted}{c++}
+requires(inline)
 add <- cppFunction("
     double add(double x, double y)
     {
