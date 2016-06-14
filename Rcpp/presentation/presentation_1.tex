@@ -1,0 +1,450 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+
+\documentclass[hyperef={
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=black,
+urlcolor=blue}
+]{beamer}
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\setbeamertemplate{items}[triangle]
+\setbeamertemplate{footline}{}
+\addtobeamertemplate{navigation symbols}{}{%
+	\usebeamerfont{header}%
+	\usebeamercolor[fg]{header}
+	\hspace{1em}
+	\insertframenumber/\inserttotalframenumber
+}
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{minted}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+\title[Rcpp]{Rcpp} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Oliver Heidmann\\{\small Supervised by: Julian Kunkel}}
+\institute[UNIHH] 
+{
+University of Hamburg  \\ % Your institution for the title page
+\medskip
+\textit{oliverheidmann@hotmail.de} % Your email address
+\newline
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\begin{frame}
+\frametitle{Overview} \tableofcontents 
+\end{frame}
+
+%DONE
+%===============================================
+\section{What is C++?}
+%===============================================
+\begin{frame}
+    \frametitle{What is C++?}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\begin{itemize}
+    \item object orientated programming languge
+    \item intermediate level language
+        \begin{itemize}
+            \item high level language features
+            \newline and also 
+            \item low level language features 
+        \end{itemize}
+    \item designed to be
+        \begin{itemize}
+            \item fast at executing 
+            \item efficient with memory
+            \item flexible in the way it can be used
+        \end{itemize}
+\end{itemize}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}
+
+%===============================================
+\section{What is Rccp?}
+%===============================================
+\begin{frame}
+    \frametitle{What is Rccp?}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\setbeamertemplate{items}[triangle]
+\begin{itemize}
+    \item easy integration of c++ code
+    \item mappings from r objects to c classes 
+    \item package skeleton creation
+    \item flexible error and exception handling
+\end{itemize}
+\end{frame}
+
+%DONE
+%DONE
+%===============================================
+\section{Rcpp basics}
+%===============================================
+\subsection{RObject and SEXP}
+\begin{frame}
+\frametitle{RObject and SEXP}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\begin{itemize}
+    \item Rcpp::RObject is a very thin wrapper around an SEXP. 
+    \item Rcpp::RObject defines set of functions applicable to any r object
+    \item SEXP only member of Rcpp::RObject.
+    \item SEXP represents r object
+    \item SEXP is guarded from Garbage collection through Rcpp::RObject
+\end{itemize}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}        
+
+%DONE
+%================================================
+\subsubsection{Rcpp basics: Type Mappings}
+\begin{frame}
+\frametitle{Rcpp basics: Type Mappings}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+    What is Wrappable?
+\begin{itemize}
+    \item int double bool to R atomic vectors
+    \item std::string to R atomic character vectors
+    \item STL containers
+    \item and any class that has a SEXP() operator for conversion
+    \item or any class in which wrap() tamplate is specialized
+\end{itemize}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}
+
+%================================================
+\subsubsection{conversion methods}
+\begin{frame}[fragile]
+\frametitle{conversion methods}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+Rcpp::wrap for converting c++ types to R
+\begin{minted}{c++}
+template <typename T> SEXP wrap(const T &  object)
+\end{minted}
+\hspace{4 mm} \\
+Rcpp::as for converting R types to c++ types
+\begin{minted}{c++}
+template <typename T> T as(SEXP x)
+\end{minted} 
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}
+
+%================================================
+\subsubsection{Calling a function}
+\begin{frame}[fragile]
+\frametitle{Calling a c++ function in r}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\begin{itemize}
+    \item calling done with .call(...)
+    \item r function call
+    \item calls the c function for r
+\end{itemize}
+\begin{minted}{R}
+.call(
+    "function_name", parameter_1, ...,
+    parameter_n, package="packagename"
+)
+\end{minted}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}
+
+%================================================
+\section{Writing R code}
+%================================================
+\subsection{Rcpp.package.skeleton}
+\begin{frame}
+    \frametitle{Rcpp.package.skeleton}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\begin{itemize}
+    \item r command to create skeleton rcpp package
+    \item already in Rcpp package
+    \item can be created with example functions
+    \item very easy to get into
+\end{itemize}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}
+
+%===============================================
+\begin{frame}
+    \frametitle{rcpp skeleton package guide}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+    rough guide in package included
+\begin{itemize}
+\item edit the help file skeletons in 'man', possibly combining help files
+  for multiple functions.
+\item edit the exports in 'NAMESPACE', and add necessary imports.
+\item put any c/c++/fortran code in 'src'.
+\item R CMD build to build the package tarball.
+\item R CMD check to check the package tarball.
+\end{itemize}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}
+
+%===============================================
+\section{Example parts}
+%===============================================
+\subsection{cpp Export function}
+\begin{frame}[fragile]
+\frametitle{cpp Export function}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\begin{minted}{c++}
+RcppExport SEXP test_add_lists(SEXP r_list1, SEXP r_list2)
+{        
+    std::vector<int> cpp_vector1;
+    std::vector<int> cpp_vector2;
+        
+    BEGIN_RCPP 
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+
+    cpp_vector1 = Rcpp::as<std::vector<int>>(r_list1);
+    cpp_vector2 = Rcpp::as<std::vector<int>>(r_list2);
+    
+    __result = add_lists(cpp_vector1, cpp_vector2);
+    
+    return Rcpp::wrap(__result);
+    END_RCPP
+}
+\end{minted}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}
+
+%===============================================
+\subsection{c++ function}
+\begin{frame}[fragile]
+\frametitle{c++ function}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\begin{minted}{c++}
+
+    std::vector<int> add_lists(std::vector<int> vec1,
+                               std::vector<int> vec2) {
+        
+        std::vector<int> result;
+        unsigned long max_length;
+        
+        max_length = std::min(vec1.size(), vec2.size());
+        
+        for (unsigned long i = 0; i < max_length; i++)
+        {
+            result.push_back(vec1[i] + vec2[i]);
+        }
+        return result;}
+
+\end{minted} 
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}
+
+%===============================================
+\subsection{calling the function}
+\begin{frame}[fragile]
+\frametitle{calling the function}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+
+\begin{minted}{c++}
+    add_lists <-function(vec1, vec2) {
+       .Call( "test_add_lists", vec1, vec2, PACKAGE = 'test')
+   }
+\end{minted}
+
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}
+
+%================================================
+\subsection{package inline}
+\begin{frame}[fragile]
+\frametitle{package inline}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\begin{minted}{c++}
+add <- cppFunction("
+    double add(double x, double y)
+    {
+    double sum = x + y;
+    return sum;
+    }
+")
+
+add(-0.01,1.02)
+\end{minted}
+output:
+1.01
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}
+
+%------------------------------------------------
+\subsection{sourceCpp}
+\begin{frame}[fragile]
+\frametitle{sourceCpp}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+simple-c-functions.cpp
+\begin{minted}{c++}
+#include <Rcpp.h>
+#include <iostream>
+
+// [[Rcpp::export]]
+double myCmean(Rcpp::NumericVector x)
+{
+   
+    double result = 0;
+    for(auto v : x)
+    {
+        result += v;
+    }
+    return result/x.length();
+}
+\end{minted}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]
+\frametitle{sourceCpp}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+main.R
+\begin{minted}{c++}
+
+    require(Rcpp)
+    sourceCpp("simple-c-functions.cpp")
+
+    myCmean(10.01,1.1,2.26)
+\end{minted}
+output: \newline
+13.37
+
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}
+%DONE
+
+%===============================================
+\subsection{RuntimeComparison}
+\begin{frame}
+\frametitle{Runtime comparison}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+
+x = vector with 10000 entrys of type numeric/double\newline
+each function was executed 1000 times\newline
+\newline
+unit: microseconds\newline
+
+\begin{tabular}{rrrr}
+function & min & median & max \\
+r inlineMean(x) & 12.054 & 14.5440 & 49.531 \\
+r mean(x) & 2062.821 & 2151.4090 & 3021.454 \\
+c mean(x) & 9.179 & 9.8325 & 21.462 \\
+\end{tabular}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}
+
+%===============================================
+\section{Conclusion}
+\begin{frame}
+\frametitle{Conclusion}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\begin{itemize}
+\item Rcpp is easy to get into
+\item package creation is fast and easy
+\item sourceCpp() easiest way of using small
+      cpp functions
+\item c++ code is a lot faster
+    
+\end{itemize}
+\end{frame}
+
+%===============================================
+\section{sources}
+\begin{frame}
+\frametitle{sources}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\begin{itemize}
+\item http://dirk.eddelbuettel.com/code/rcpp/Rcpp-introduction.pdf\newline13.6.2016
+\item http://dirk.eddelbuettel.com/code/rcpp/Rcpp-package.pdf\newline 13.6.2016
+\item http://dirk.eddelbuettel.com/code/rcpp/Rcpp-FAQ.pdf\newline13.6.2016
+\item https:://www.techopedia.com/definition/26184/c-programming-language\newline13.6.2016
+\item adv-r.had.co.nz/Rcpp.html\newline13.6.2016
+\item https://cran.r-project.org/web/packages/microbenchmark/microbenchmark.pdf\newline13.6.2016
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{itemize}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}
+%===============================================
+\end{document} 

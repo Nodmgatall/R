@@ -1,5 +1,23 @@
-library(inline)
-source(file="simple_file_source.r")
-hello_world()
-hello_world_two <- cxxfunction(signature(),simple_file_source.cpp, plugin = "Rcpp")
-hello_world_two
+require(Rcpp)
+library(microbenchmark)
+sourceCpp("simple_file_source.cpp")
+
+
+x <- runif(10000,0,1000)
+
+myRmean <- function(x)
+{
+    result = 0
+    for(e in x)
+    {
+        result = result + e
+    }
+    return(result/length(x))
+}
+
+microbenchmark(
+    myRmean(x),
+    myCmean(x))
+
+myRmean(x)
+myCmean(x)
