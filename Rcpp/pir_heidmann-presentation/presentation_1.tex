@@ -181,9 +181,9 @@ University of Hamburg  \\ % Your institution for the title page
 % - - - - - - - - - - - - - - - - - - - - - - - -
     What is Wrappable?
 \begin{itemize}
-    \item int double bool to R atomic vectors
+    \item int double bool to r atomic vectors
     \item std::string to R atomic character vectors
-    \item STL containers
+    \item stl containers
     \item and any class that has a SEXP() operator for conversion
     \item or any class in which wrap() tamplate is specialized
 \end{itemize}
@@ -215,7 +215,10 @@ template <typename T> T as(SEXP x)
 \begin{itemize}
     \item calling done with .call(...)
     \item r function call
-    \item calls the c function for r
+    \item calls the c++ function in r
+    \item overloading not supported
+    \item parameters must be convertible
+    \item return type has to be convertible or void
 \end{itemize}
 \begin{minted}{R}
 .call(
@@ -238,28 +241,43 @@ template <typename T> T as(SEXP x)
     \item already in Rcpp package
     \item can be created with example functions
     \item very easy to get into
+    \item rough guide in created package
+    \item c++ functons get compiled when package is built
 \end{itemize}
 % - - - - - - - - - - - - - - - - - - - - - - - -
 \end{frame}
 
-%===============================================
+%================================================
+\subsection{Rcpp and inline}
 \begin{frame}
-    \frametitle{rcpp skeleton package guide}
+    \frametitle{Rcpp and inline}
 % - - - - - - - - - - - - - - - - - - - - - - - -
-    rough guide in package included
 \begin{itemize}
-\item edit the help file skeletons in 'man', possibly combining help files
-  for multiple functions.
-\item edit the exports in 'NAMESPACE', and add necessary imports.
-\item put any c/c++/fortran code in 'src'.
-\item R CMD build to build the package tarball.
-\item R CMD check to check the package tarball.
+    \item requires inline package 
+    \item compiles at each execution
+\end{itemize}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\end{frame}
+
+%================================================
+\subsection{Rcpp cppSource}
+\begin{frame}
+    \frametitle{Rcpp cppSource}
+% - - - - - - - - - - - - - - - - - - - - - - - -
+\begin{itemize}
+    \item simple way of including c++ functions
+    \item function needs to be marked with [[Rcpp::export]]
+    \item handles wrapping automatically
+    \item slightly faster than inline functions
+    \item compiles at each execution
+    \item less code to be written
+    \item very convenient
 \end{itemize}
 % - - - - - - - - - - - - - - - - - - - - - - - -
 \end{frame}
 
 %===============================================
-\section{Example parts}
+\section{Examples}
 %===============================================
 \subsection{cpp Export function}
 \begin{frame}[fragile]
