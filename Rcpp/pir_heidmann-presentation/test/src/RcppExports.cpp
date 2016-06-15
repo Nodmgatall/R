@@ -14,7 +14,6 @@ std::vector<int> add_lists(std::vector<int> vec1, std::vector<int> vec2);
 RcppExport SEXP test_rcpp_hello_world() {
     BEGIN_RCPP
     Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
     __result = 1;
     rcpp_hello_world();
     return __result;
@@ -25,7 +24,6 @@ RcppExport SEXP test_rcpp_hello_world() {
 RcppExport SEXP test_return_given_value(SEXP value) {
     BEGIN_RCPP
     int a = Rcpp::as<int>(value);
-    Rcpp::RNGScope __rngScope;
     int __result = return_given_value(a);
     return Rcpp::wrap(__result);
     END_RCPP
@@ -35,7 +33,6 @@ RcppExport SEXP test_return_given_value(SEXP value) {
 RcppExport SEXP test_add_lists(SEXP vec1, SEXP vec2) {
     BEGIN_RCPP
     Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
     __result =
         add_lists(Rcpp::as<std::vector<int>>(vec1), Rcpp::as<std::vector<int>>(vec2));
     return Rcpp::wrap(__result);
