@@ -176,7 +176,7 @@ University of Hamburg  \\ % Your institution for the title page
 %DONE
 %================================================
 \subsubsection{Rcpp basics: Type Mappings}
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Rcpp basics: Type Mappings}
 % - - - - - - - - - - - - - - - - - - - - - - - -
     What is Wrappable?
@@ -187,15 +187,8 @@ University of Hamburg  \\ % Your institution for the title page
     \item and any class that has a SEXP() operator for conversion
     \item or any class in which wrap() tamplate is specialized
 \end{itemize}
-% - - - - - - - - - - - - - - - - - - - - - - - -
-\end{frame}
-
-%================================================
-\subsubsection{conversion methods}
-\begin{frame}[fragile]
-\frametitle{conversion methods}
-% - - - - - - - - - - - - - - - - - - - - - - - -
-Rcpp::wrap for converting c++ types to R
+\hspace{4 mm} \\
+wrap() for converting c++ types to R
 \begin{minted}{c++}
 template <typename T> SEXP wrap(const T &  object)
 \end{minted}
@@ -204,6 +197,7 @@ Rcpp::as for converting R types to c++ types
 \begin{minted}{c++}
 template <typename T> T as(SEXP x)
 \end{minted} 
+% - - - - - - - 
 % - - - - - - - - - - - - - - - - - - - - - - - -
 \end{frame}
 
@@ -214,12 +208,12 @@ template <typename T> T as(SEXP x)
 % - - - - - - - - - - - - - - - - - - - - - - - -
 \begin{itemize}
     \item calling done with .call(...)
-    \item r function call
     \item calls the c++ function in r
     \item overloading not supported
     \item parameters must be convertible
     \item return type has to be convertible or void
 \end{itemize}
+\hspace{4 mm} \\
 \begin{minted}{R}
 .call(
     "function_name", parameter_1, ...,
